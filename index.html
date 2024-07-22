@@ -58,31 +58,35 @@ function handleComplete(evt,comp) {
 
 	// JavaScript to control video display based on frame
         document.addEventListener('DOMContentLoaded', function() {
-            // Assuming a function that gets the current frame of your animation
-            function getCurrentFrame() {
-                // This function should return the current frame of your animation
-                // You'll need to implement this based on your specific setup
-                return currentFrame;
-            }
+            let currentFrame = 1; // Starting frame
+            const targetFrame = 272; // Frame at which to show the video
+            const totalFrames = 300; // Assuming a total number of frames, adjust as needed
+            const fps = 24; // Frames per second, adjust to match your animation's FPS
+            const frameDuration = 1000 / fps; // Duration of one frame in milliseconds
 
-            // Function to check and display video at frame 272
-            function checkFrame() {
-                var frame = getCurrentFrame();
-                if (frame === 272) {
+            function showVideoAtFrame() {
+                if (currentFrame === targetFrame) {
                     document.getElementById('videoContainer').style.display = 'block';
                 } else {
                     document.getElementById('videoContainer').style.display = 'none';
                 }
             }
 
-            // Assuming you have an animation loop or interval to check the frame
-            setInterval(checkFrame, 100); // Check every 100ms
+            function updateFrame() {
+                if (currentFrame <= totalFrames) {
+                    showVideoAtFrame();
+                    currentFrame++;
+                    setTimeout(updateFrame, frameDuration);
+                }
+            }
+
+            // Start the frame update loop
+            updateFrame();
         });
 }
 </script>
 
 	<style>
-        /* Initial video container style */
         .video-container {
             position: absolute;
             top: 272px; /* Adjust based on your design */
@@ -108,7 +112,7 @@ function handleComplete(evt,comp) {
 		</div>
 	</div>
 
-	<div class="video-container" id="videoContainer">
+	 <div class="video-container" id="videoContainer">
         <video controls id="myVideo">
             <source src="videoplaybackChihiroMV.MP4" type="video/mp4">
             Your browser does not support the video tag.
