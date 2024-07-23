@@ -56,51 +56,10 @@ function handleComplete(evt,comp) {
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 
-	// JavaScript to control video display based on frame
-        document.addEventListener('DOMContentLoaded', function() {
-            let currentFrame = 272; // Starting frame
-            const totalFrames = 300; // Assuming a total number of frames, adjust as needed
-            const fps = 24; // Frames per second, adjust to match your animation's FPS
-            const frameDuration = 1000 / fps; // Duration of one frame in milliseconds
-
-            function showVideoAtFrame() {
-                if (currentFrame === targetFrame) {
-                    document.getElementById('videoContainer').style.display = 'block';
-                } else {
-                    document.getElementById('videoContainer').style.display = 'none';
-                }
-            }
-
-            function updateFrame() {
-                if (currentFrame <= totalFrames) {
-                    showVideoAtFrame();
-                    currentFrame++;
-                    setTimeout(updateFrame, frameDuration);
-                }
-            }
-
-            // Start the frame update loop
-            updateFrame();
-        });
+	
+          
 }
-</script>
-
-	<style>
-        .video-container {
-            position: absolute;
-            top: 272px; /* Adjust based on your design */
-            left: 611.25px; /* Adjust based on your design */
-            width: 163.05px;
-            height: 127.2px;
-            display: none; /* Hide initially */
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            border: none; /* Remove any border */
-        }
-    </style>
+</script> 
 	
 <!-- write your code here -->
 </head>
@@ -109,14 +68,7 @@ function handleComplete(evt,comp) {
 		<canvas id="canvas" width="1280" height="720" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
 		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1280px; height:720px; position: absolute; left: 0px; top: 0px; display: block;">
 		</div>
-	</div>
-
-	 <div class="video-container" id="videoContainer">
-        <video controls id="myVideo">
-            <source src="videoplaybackChihiroMV.MP4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+	</div> 
 	
 </body>
 </html>
